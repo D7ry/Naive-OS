@@ -7,8 +7,8 @@ use File::Temp 'tempfile';
 use Getopt::Long qw(:config bundling);
 use Fcntl qw(SEEK_SET SEEK_CUR);
 
-# Read Pintos.pm from the same directory as this program.
-BEGIN { my $self = $0; $self =~ s%/+[^/]*$%%; require "$self/Pintos.pm"; }
+# Read Naiveos.pm from the same directory as this program.
+BEGIN { my $self = $0; $self =~ s%/+[^/]*$%%; require "$self/Naiveos.pm"; }
 
 # Command-line options.
 our ($start_time) = time ();
@@ -121,10 +121,10 @@ sub usage {
     my ($exitcode) = @_;
     $exitcode = 1 unless defined $exitcode;
     print <<'EOF';
-pintos, a utility for running Pintos in a simulator
-Usage: pintos [OPTION...] -- [ARGUMENT...]
+Naiveos, a utility for running Naiveos in a simulator
+Usage: Naiveos [OPTION...] -- [ARGUMENT...]
 where each OPTION is one of the following options
-  and each ARGUMENT is passed to Pintos kernel verbatim.
+  and each ARGUMENT is passed to Naiveos kernel verbatim.
 Simulator selection:
   --bochs                  (default) Use Bochs as simulator
   --qemu                   Use QEMU as simulator
@@ -141,12 +141,12 @@ Timing options: (Bochs only)
   -j SEED                  Randomize timer interrupts
   -r, --realtime           Use realistic, not reproducible, timings
 Testing options:
-  -T, --timeout=N          Kill Pintos after N seconds CPU time or N*load_avg
+  -T, --timeout=N          Kill Naiveos after N seconds CPU time or N*load_avg
                            seconds wall-clock time (whichever comes first)
-  -k, --kill-on-failure    Kill Pintos a few seconds after a kernel or user
+  -k, --kill-on-failure    Kill Naiveos a few seconds after a kernel or user
                            panic, test failure, or triple fault
 Configuration options:
-  -m, --mem=N              Give Pintos N MB physical RAM (default: 4)
+  -m, --mem=N              Give Naiveos N MB physical RAM (default: 4)
 File system commands:
   -p, --put-file=HOSTFN    Copy HOSTFN into VM, by default under same name
   -g, --get-file=GUESTFN   Copy GUESTFN out of VM, by default under same name
@@ -293,7 +293,7 @@ sub find_disks {
 	open ($handle, '>', $make_disk) or die "$make_disk: create: $!\n";
     }
 
-    # Prepare the arguments to pass to the Pintos kernel.
+    # Prepare the arguments to pass to the Naiveos kernel.
     my (@args);
     push (@args, shift (@kernel_args))
       while @kernel_args && $kernel_args[0] =~ /^-/;
@@ -435,7 +435,7 @@ sub put_scratch_file {
 
     # ustar format supports up to 100 characters for a file name, and
     # even longer names given some common properties, but our code in
-    # the Pintos kernel only supports at most 99 characters.
+    # the Naiveos kernel only supports at most 99 characters.
     die "$dst_file_name: name too long (max 99 characters)\n"
       if length ($dst_file_name) > 99;
 
@@ -655,8 +655,8 @@ sub run_player {
 
     $mem = round_up ($mem, 4);	# Memory must be multiple of 4 MB.
 
-    open (VMX, ">", "pintos.vmx") or die "pintos.vmx: create: $!\n";
-    chmod 0777 & ~umask, "pintos.vmx";
+    open (VMX, ">", "Naiveos.vmx") or die "Naiveos.vmx: create: $!\n";
+    chmod 0777 & ~umask, "Naiveos.vmx";
     print VMX <<EOF;
 #! /usr/bin/vmware -G
 config.version = 8
@@ -673,7 +673,7 @@ EOF
     print VMX <<EOF if $serial;
 serial0.present = TRUE
 serial0.fileType = "pipe"
-serial0.fileName = "pintos.socket"
+serial0.fileName = "Naiveos.socket"
 serial0.pipe.endPoint = "client"
 serial0.tryNoRxLoss = "TRUE"
 EOF
@@ -728,9 +728,9 @@ EOF
 	  "and output will fail\n" if !defined $squish_unix;
     }
 
-    my ($vmx) = getcwd () . "/pintos.vmx";
+    my ($vmx) = getcwd () . "/Naiveos.vmx";
     my (@cmd) = ("vmplayer", $vmx);
-    unshift (@cmd, $squish_unix, "pintos.socket") if $squish_unix;
+    unshift (@cmd, $squish_unix, "Naiveos.socket") if $squish_unix;
     print join (' ', @cmd), "\n";
     xsystem (@cmd);
 }
@@ -838,7 +838,7 @@ sub xsystem {
 		    if (/(Kernel PANIC|User process ABORT)/ ) {
 			$cause = "\L$1\E";
 			alarm (5);
-		    } elsif (/Pintos booting/ && ++$boots > 1) {
+		    } elsif (/Naiveos booting/ && ++$boots > 1) {
 			$cause = "triple fault";
 			alarm (5);
 		    } elsif (/FAILED/) {

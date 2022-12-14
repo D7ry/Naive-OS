@@ -17,7 +17,7 @@ symbol printed is from the first binary that contains a match.
 
 The ADDRESS list should be taken from the "Call stack:" printed by the
 kernel.  Read "Backtraces" in the "Debugging Tools" chapter of the
-Pintos documentation for more information.
+Naiveos documentation for more information.
 EOF
     exit 0;
 }
@@ -100,7 +100,7 @@ for my $loc (@locs) {
 		$line =~ s/^(\.\.\/)*//;
 		if (substr($line, 0, 1) eq "/") {
 			$line = realpath($line);
-			my ($offset) = index $line, "pintos/src/";
+			my ($offset) = index $line, "Naiveos/src/";
 			if ($offset != -1) {
 				$line = substr $line, $offset;
 			}

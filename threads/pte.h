@@ -37,7 +37,7 @@ static inline uintptr_t pd_no(const void* va) { return (uintptr_t)va >> PDSHIFT;
 /* Page directory and page table entries.
 
    For more information see the section on page tables in the
-   Pintos reference guide chapter, or [IA32-v3a] 3.7.6
+   Naiveos reference guide chapter, or [IA32-v3a] 3.7.6
    "Page-Directory and Page-Table Entries".
 
    PDEs and PTEs share a common format:

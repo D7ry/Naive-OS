@@ -20,7 +20,7 @@ static void found_partition(struct block*, uint8_t type, block_sector_t start, b
                             int part_nr);
 static const char* partition_type_name(uint8_t);
 
-/* Scans BLOCK for partitions of interest to Pintos. */
+/* Scans BLOCK for partitions of interest to Naiveos. */
 void partition_scan(struct block* block) {
   int part_nr = 0;
   read_partition_table(block, 0, 0, &part_nr);
@@ -29,7 +29,7 @@ void partition_scan(struct block* block) {
 }
 
 /* Reads the partition table in the given SECTOR of BLOCK and
-   scans it for partitions of interest to Pintos.
+   scans it for partitions of interest to Naiveos.
 
    If SECTOR is 0, so that this is the top-level partition table
    on BLOCK, then PRIMARY_EXTENDED_SECTOR is not meaningful;
@@ -127,7 +127,7 @@ static void read_partition_table(struct block* block, block_sector_t sector,
 /* We have found a primary or logical partition of the given TYPE
    on BLOCK, starting at sector START and continuing for SIZE
    sectors, which we are giving the partition number PART_NR.
-   Check whether this is a partition of interest to Pintos, and
+   Check whether this is a partition of interest to Naiveos, and
    if so then add it to the proper element of partitions[]. */
 static void found_partition(struct block* block, uint8_t part_type, block_sector_t start,
                             block_sector_t size, int part_nr) {
@@ -193,10 +193,10 @@ static const char* partition_type_name(uint8_t type) {
       [0x1b] = "Hidden W95 FAT32",
       [0x1c] = "Hidden W95 FAT32 (LBA)",
       [0x1e] = "Hidden W95 FAT16 (LBA)",
-      [0x20] = "Pintos OS kernel",
-      [0x21] = "Pintos file system",
-      [0x22] = "Pintos scratch",
-      [0x23] = "Pintos swap",
+      [0x20] = "Naiveos OS kernel",
+      [0x21] = "Naiveos file system",
+      [0x22] = "Naiveos scratch",
+      [0x23] = "Naiveos swap",
       [0x24] = "NEC DOS",
       [0x39] = "Plan 9",
       [0x3c] = "PartitionMagic recovery",

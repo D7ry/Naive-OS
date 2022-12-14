@@ -61,7 +61,7 @@ void fsutil_rm(char** argv) {
 }
 
 /* Extracts a ustar-format tar archive from the scratch block
-   device into the Pintos file system. */
+   device into the Naiveos file system. */
 void fsutil_extract(char** argv UNUSED) {
   static block_sector_t sector = 0;
 

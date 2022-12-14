@@ -19,13 +19,13 @@
 
      - Channel 0 is connected to interrupt line 0, so that it can
        be used as a periodic timer interrupt, as implemented in
-       Pintos in devices/timer.c.
+       Naiveos in devices/timer.c.
 
      - Channel 1 is used for dynamic RAM refresh (in older PCs).
        No good can come of messing with this.
 
      - Channel 2 is connected to the PC speaker, so that it can
-       be used to play a tone, as implemented in Pintos in
+       be used to play a tone, as implemented in Naiveos in
        devices/speaker.c.
 
    MODE specifies the form of output:

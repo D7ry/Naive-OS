@@ -6,8 +6,8 @@ use POSIX;
 use Getopt::Long qw(:config bundling);
 use Fcntl 'SEEK_SET';
 
-# Read Pintos.pm from the same directory as this program.
-BEGIN { my $self = $0; $self =~ s%/+[^/]*$%%; require "$self/Pintos.pm"; }
+# Read Naiveos.pm from the same directory as this program.
+BEGIN { my $self = $0; $self =~ s%/+[^/]*$%%; require "$self/Naiveos.pm"; }
 
 our ($disk_fn);			# Output disk file name.
 our (%parts);			# Partitions.
@@ -102,8 +102,8 @@ exit 0;
 
 sub usage {
     print <<'EOF';
-pintos-mkdisk, a utility for creating Pintos virtual disks
-Usage: pintos-mkdisk [OPTIONS] DISK [-- ARGUMENT...]
+Naiveos-mkdisk, a utility for creating Naiveos virtual disks
+Usage: Naiveos-mkdisk [OPTIONS] DISK [-- ARGUMENT...]
 where DISK is the virtual disk to create,
       each ARGUMENT is inserted into the command line written to DISK,
   and each OPTION is one of the following options.
@@ -115,7 +115,7 @@ Partition options: (where PARTITION is one of: kernel filesys scratch swap)
 Output disk options:
   --format=partitioned     Write partition table to output (default)
   --format=raw             Do not write partition table to output
-  (Pintos can only use partitioned disks.)
+  (Naiveos can only use partitioned disks.)
 Partitioned format output options:
   --loader[=FILE]          Get bootstrap loader from FILE (default: loader.bin
                            if --kernel option is specified, empty otherwise)

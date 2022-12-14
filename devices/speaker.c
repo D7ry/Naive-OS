@@ -42,7 +42,7 @@ void speaker_beep(void) {
      because we don't want to freeze the machine during the beep.
      We could add a hook to the timer interrupt to avoid that
      problem, but then we'd risk failing to ever stop the beep if
-     Pintos crashes for some unrelated reason.  There's nothing
+     Naiveos crashes for some unrelated reason.  There's nothing
      more annoying than a machine whose beeping you can't stop
      without a power cycle.
 

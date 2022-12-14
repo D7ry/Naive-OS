@@ -3,8 +3,8 @@
 use strict;
 use Fcntl 'SEEK_SET';
 
-# Read Pintos.pm from the same directory as this program.
-BEGIN { my $self = $0; $self =~ s%/+[^/]*$%%; require "$self/Pintos.pm"; }
+# Read Naiveos.pm from the same directory as this program.
+BEGIN { my $self = $0; $self =~ s%/+[^/]*$%%; require "$self/Naiveos.pm"; }
 
 # Get command-line arguments.
 usage (0) if @ARGV == 1 && $ARGV[0] eq '--help';
@@ -15,10 +15,10 @@ my ($disk, undef, @kernel_args) = @ARGV;
 my ($handle);
 open ($handle, '+<', $disk) or die "$disk: open: $!\n";
 
-# Check that it's a partitioned disk with a Pintos loader.
+# Check that it's a partitioned disk with a Naiveos loader.
 my ($buffer) = read_fully ($handle, $disk, 512);
 unpack ("x510 v", $buffer) == 0xaa55 or die "$disk: not a partitioned disk\n";
-$buffer =~ /Pintos/ or die "$disk: does not contain Pintos loader\n";
+$buffer =~ /Naiveos/ or die "$disk: does not contain Naiveos loader\n";
 
 # Write the command line.
 our ($LOADER_SIZE);
@@ -33,9 +33,9 @@ exit 0;
 
 sub usage {
     print <<'EOF';
-pintos-set-cmdline, a utility for changing the command line in Pintos disks
-Usage: pintos-set-cmdline DISK -- [ARGUMENT...]
-where DISK is a bootable disk containing a Pintos loader
+Naiveos-set-cmdline, a utility for changing the command line in Naiveos disks
+Usage: Naiveos-set-cmdline DISK -- [ARGUMENT...]
+where DISK is a bootable disk containing a Naiveos loader
   and each ARGUMENT is inserted into the command line written to DISK.
 EOF
     exit ($_[0]);

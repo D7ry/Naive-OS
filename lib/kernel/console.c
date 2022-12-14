@@ -30,7 +30,7 @@ static struct lock console_lock;
    likely just recurse. */
 static bool use_console_lock;
 
-/* It's possible, if you add enough debug output to Pintos, to
+/* It's possible, if you add enough debug output to Naiveos, to
    try to recursively grab console_lock from a single thread.  As
    a real example, I added a printf() call to palloc_free().
    Here's a real backtrace that resulted:

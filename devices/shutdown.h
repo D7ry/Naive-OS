@@ -3,7 +3,7 @@
 
 #include <debug.h>
 
-/* How to shut down when Pintos has nothing left to do. */
+/* How to shut down when Naiveos has nothing left to do. */
 enum shutdown_type {
   SHUTDOWN_NONE,      /* Loop forever. */
   SHUTDOWN_POWER_OFF, /* Power off the machine (if possible). */

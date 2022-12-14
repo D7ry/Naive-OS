@@ -75,7 +75,7 @@ static void locate_block_devices(void);
 static void locate_block_device(enum block_type, const char* name);
 #endif
 
-/* Pintos main program. */
+/* Naiveos main program. */
 int main(void) {
   char** argv;
 
@@ -92,7 +92,7 @@ int main(void) {
   console_init();
 
   /* Greet user. */
-  printf("Pintos booting with %'" PRIu32 " kB RAM...\n", init_ram_pages * PGSIZE / 1024);
+  printf("Naiveos booting with %'" PRIu32 " kB RAM...\n", init_ram_pages * PGSIZE / 1024);
 
   /* Initialize memory system. */
   palloc_init(user_page_limit);
@@ -312,10 +312,10 @@ static char** parse_options(char** argv) {
      time.  This has no effect if an "-rs" option was specified.
 
      When running under Bochs, this is not enough by itself to
-     get a good seed value, because the pintos script sets the
+     get a good seed value, because the Naiveos script sets the
      initial time to a predictable value, not to the local time,
      for reproducibility.  To fix this, give the "-r" option to
-     the pintos script to request real-time execution. */
+     the Naiveos script to request real-time execution. */
   random_init(rtc_get_time());
 
   return argv;
@@ -423,7 +423,7 @@ static void usage(void) {
          "  ls                 List files in the root directory.\n"
          "  cat FILE           Print FILE to the console.\n"
          "  rm FILE            Delete FILE.\n"
-         "Use these actions indirectly via `pintos' -g and -p options:\n"
+         "Use these actions indirectly via `Naiveos' -g and -p options:\n"
          "  extract            Untar from scratch device into file system.\n"
          "  append FILE        Append FILE to tar file on scratch device.\n"
 #endif
@@ -454,7 +454,7 @@ static void usage(void) {
 }
 
 #ifdef FILESYS
-/* Figure out what block devices to cast in the various Pintos roles. */
+/* Figure out what block devices to cast in the various Naiveos roles. */
 static void locate_block_devices(void) {
   locate_block_device(BLOCK_FILESYS, filesys_bdev_name);
   locate_block_device(BLOCK_SCRATCH, scratch_bdev_name);

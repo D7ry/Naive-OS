@@ -174,7 +174,7 @@ struct list_elem* list_min(struct list*, list_less_func*, void* aux);
 //custom list functions
 
 /**
- * @brief Free all structs and their members of a pintos list; remove all elements which are embedded in those structs from the list.
+ * @brief Free all structs and their members of a Naiveos list; remove all elements which are embedded in those structs from the list.
  *        Does not free the list itself.
  * @param list pointer to the list to free
  * @param clear_func function to clear the struct-which list_elem is embedded in-and its members.
@@ -184,7 +184,7 @@ struct list_elem* list_min(struct list*, list_less_func*, void* aux);
 void list_clear(struct list* list, void (*clear_func)(struct list_elem* e));
 
 /**
- * @brief Free all structs and their members of a pintos list; remove all elements which are embedded in those structs from the list.
+ * @brief Free all structs and their members of a Naiveos list; remove all elements which are embedded in those structs from the list.
  *        Free the list itself.
  * @param list pointer to the list to free
  * @param free_func function to free the struct-which list_elem is embedded in-and its members.

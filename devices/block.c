@@ -23,7 +23,7 @@ struct block {
 /* List of all block devices. */
 static struct list all_blocks = LIST_INITIALIZER(all_blocks);
 
-/* The block block assigned to each Pintos role. */
+/* The block block assigned to each Naiveos role. */
 static struct block* block_by_role[BLOCK_ROLE_CNT];
 
 static struct block* list_elem_to_block(struct list_elem*);
@@ -121,7 +121,7 @@ const char* block_name(struct block* block) { return block->name; }
 /* Returns BLOCK's type. */
 enum block_type block_type(struct block* block) { return block->type; }
 
-/* Prints statistics for each block device used for a Pintos role. */
+/* Prints statistics for each block device used for a Naiveos role. */
 void block_print_stats(void) {
   int i;
 

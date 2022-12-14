@@ -1,4 +1,4 @@
-# Pintos helper subroutines.
+# Naiveos helper subroutines.
 
 # Number of bytes available for the loader at the beginning of the MBR.
 # Kernel command-line arguments follow the loader.
@@ -264,7 +264,7 @@ sub make_partition_table {
 # make_kernel_command_line(@args)
 #
 # Returns the raw bytes to write to an MBR at offset $LOADER_SIZE to
-# set a Pintos kernel command line.
+# set a Naiveos kernel command line.
 sub make_kernel_command_line {
     my (@args) = @_;
     my ($args) = join ('', map ("$_\0", @args));
@@ -443,7 +443,7 @@ sub interpret_partition_table {
 	  next if $bootable != 0 && $bootable != 0x80;
 
 	my ($role) = $type2role{$type};
-	(printf STDERR "warning: non-Pintos partition type 0x%02x in %s\n",
+	(printf STDERR "warning: non-Naiveos partition type 0x%02x in %s\n",
 	 $type, $disk),
 	  next if !defined $role;
 

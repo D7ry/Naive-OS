@@ -278,7 +278,7 @@ int main(int argc __attribute__((unused)), char* argv[]) {
     relay(master, pipe_fds[0]);
 
     /* If the subprocess has died, die in the same fashion.
-         In particular, dying from SIGVTALRM tells the pintos
+         In particular, dying from SIGVTALRM tells the Naiveos
          script that we ran out of CPU time. */
     if (waitpid(pid, &status, WNOHANG) > 0) {
       if (WIFEXITED(status))

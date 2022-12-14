@@ -81,9 +81,9 @@ do
 	fi
 done
 
-if [[ -n "$PINTOS_DEBUG" ]]
+if [[ -n "$Naiveos_DEBUG" ]]
 then # Debug the given test
-	if [[ "$PINTOS_DEBUG" -ne 2 ]]
+	if [[ "$Naiveos_DEBUG" -ne 2 ]]
 	then # Run the debugger in the same terminal that invoked this script
 		test_output=$(mktemp)
 		if make -n "${test_path}.output" 2>&1 | grep -q -- '--bochs'
@@ -95,7 +95,7 @@ then # Debug the given test
 		else
 			make "${test_path}.output" > "$test_output" 2>&1 <&- &
 		fi
-		pintos-gdb kernel.o
+		Naiveos-gdb kernel.o
 		wait
 		cat "$test_output" && rm "$test_output"
 	else
@@ -103,14 +103,14 @@ then # Debug the given test
 		# and have it wait for the debugger to connect. This option is
 		# useful in situations where you'd like to see what's being printed
 		# *while* you are debugging. Students should open a second terminal
-		# tab and run 'pintos-gdb kernel.o' there, just like they always had
+		# tab and run 'Naiveos-gdb kernel.o' there, just like they always had
 		# to before this script existed.
 
 		# For some strange reason, when the tests are running under the
 		# debugger, they refuse to die from a SIGINT. To get around this, we
 		# catch the SIGINT ourselves, and terminate the test with a SIGTERM
 		# (the default sent by pkill), which does indeed work.
-		trap 'pkill pintos; exit 1' SIGINT
+		trap 'pkill Naiveos; exit 1' SIGINT
 		make "${test_path}.output" &
 		wait
 	fi

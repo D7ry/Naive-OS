@@ -8,7 +8,7 @@
 #define MAX_ARG_SIZE 256             /*force maximum argument size to 256 for now*/
 
 
-/*a congregation of custom pintos lists*/
+/*a congregation of custom Naiveos lists*/
 typedef struct list L_children;
 struct L_children_elem { /*list element for child_l*/
   tid_t pid;
@@ -21,7 +21,7 @@ void L_children_clear_func(struct list_elem* a_e);
 void L_children_clear(L_children* a_l);
 
 
-/**List element of L_arg, pintos list storing all arguments for a function.*/
+/**List element of L_arg, Naiveos list storing all arguments for a function.*/
 typedef struct list L_arg;
 struct L_arg_elem {
   char* arg;  /*char pointer to the argument*/

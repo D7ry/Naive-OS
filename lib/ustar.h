@@ -9,7 +9,7 @@
 
 /* Type of a file entry in an archive.
    The values here are the bytes that appear in the file format.
-   Only types of interest to Pintos are listed here. */
+   Only types of interest to Naiveos are listed here. */
 enum ustar_type {
   USTAR_REGULAR = '0',   /* Ordinary file. */
   USTAR_DIRECTORY = '5', /* Directory. */

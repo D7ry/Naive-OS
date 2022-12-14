@@ -41,7 +41,7 @@ void shutdown(void) {
   }
 }
 
-/* Sets TYPE as the way that machine will shut down when Pintos
+/* Sets TYPE as the way that machine will shut down when Naiveos
    execution is complete. */
 void shutdown_configure(enum shutdown_type type) { how = type; }
 
@@ -102,7 +102,7 @@ void shutdown_power_off(void) {
   outb(0x501, 0x31);
 
   /* This will power off a VMware VM if "gui.exitOnCLIHLT = TRUE"
-     is set in its configuration file.  (The "pintos" script does
+     is set in its configuration file.  (The "Naiveos" script does
      that automatically.)  */
   asm volatile("cli; hlt" : : : "memory");
 
@@ -112,7 +112,7 @@ void shutdown_power_off(void) {
     ;
 }
 
-/* Print statistics about Pintos execution. */
+/* Print statistics about Naiveos execution. */
 static void print_stats(void) {
   timer_print_stats();
   thread_print_stats();

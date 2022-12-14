@@ -85,7 +85,7 @@ struct process* get_running_pcb() {
   return pcb;
 }
 
-/*Whether the pintos main driver proc-the proc that starts up all other procs-is running.*/
+/*Whether the Naiveos main driver proc-the proc that starts up all other procs-is running.*/
 bool is_driver_process_running() {
   return thread_current()->tid == 1 && thread_current()->pcb->main_thread == 0x0;
 }

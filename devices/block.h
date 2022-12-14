@@ -7,7 +7,7 @@
 /* Size of a block device sector in bytes.
    All IDE disks use this sector size, as do most USB and SCSI
    disks.  It's not worth it to try to cater to other sector
-   sizes in Pintos (yet). */
+   sizes in Naiveos (yet). */
 #define BLOCK_SECTOR_SIZE 512
 
 /* Index of a block device sector.
@@ -24,18 +24,18 @@ struct block;
 
 /* Type of a block device. */
 enum block_type {
-  /* Block device types that play a role in Pintos. */
-  BLOCK_KERNEL,  /* Pintos OS kernel. */
+  /* Block device types that play a role in Naiveos. */
+  BLOCK_KERNEL,  /* Naiveos OS kernel. */
   BLOCK_FILESYS, /* File system. */
   BLOCK_SCRATCH, /* Scratch. */
   BLOCK_SWAP,    /* Swap. */
   BLOCK_ROLE_CNT,
 
-  /* Other kinds of block devices that Pintos may see but does
+  /* Other kinds of block devices that Naiveos may see but does
        not interact with. */
   BLOCK_RAW = BLOCK_ROLE_CNT, /* "Raw" device with unidentified contents. */
-  BLOCK_FOREIGN,              /* Owned by non-Pintos operating system. */
-  BLOCK_CNT                   /* Number of Pintos block types. */
+  BLOCK_FOREIGN,              /* Owned by non-Naiveos operating system. */
+  BLOCK_CNT                   /* Number of Naiveos block types. */
 };
 
 const char* block_type_name(enum block_type);

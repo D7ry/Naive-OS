@@ -137,7 +137,7 @@ bool pre_align_stack(void** a_esp, size_t a_arg_bytes) {
 
 /**
  * @brief Push argc and argv onto the program stack and align the stack to 16 byte per calling convention.
- * https://cs162.org/static/proj/pintos-docs/docs/userprog/program-startup/
+ * https://cs162.org/static/proj/Naiveos-docs/docs/userprog/program-startup/
  * @return true if no error occurs. false otherwise.
  */
 bool push_args(int a_argc, struct list* a_L_arg, void** a_esp) {
@@ -500,7 +500,7 @@ static void start_process(void* a_umbilic) {
 
 /**
  * @brief Free the current process's resources.
- * @note pintos driver process won't call this function to exit.
+ * @note Naiveos driver process won't call this function to exit.
  */
 void process_exit(void) {
   ASSERT(!is_driver_process_running());

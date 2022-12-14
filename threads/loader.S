@@ -38,7 +38,7 @@
 
 #### Read the partition table on each system hard disk and scan for a
 #### partition of type 0x20, which is the type that we use for a
-#### Pintos kernel.
+#### Naiveos kernel.
 ####
 #### Read [Partitions] for a description of the partition table format
 #### that we parse.
@@ -77,7 +77,7 @@ check_partition:
 	# Print [1-4].
 	call putc
 
-	# Is it a Pintos kernel partition?
+	# Is it a Naiveos kernel partition?
 	cmpb $0x20, %es:4(%si)
 	jne next_partition
 
@@ -99,7 +99,7 @@ next_drive:
 
 no_such_drive:
 no_boot_partition:
-	# Didn't find a Pintos kernel partition anywhere, give up.
+	# Didn't find a Naiveos kernel partition anywhere, give up.
 	call puts
 	.string "\rNot found\r"
 
@@ -114,10 +114,10 @@ load_kernel:
 	call puts
 	.string "\rLoading"
 
-	# Figure out number of sectors to read.  A Pintos kernel is
+	# Figure out number of sectors to read.  A Naiveos kernel is
 	# just an ELF format object, which doesn't have an
 	# easy-to-read field to identify its own size (see [ELF1]).
-	# But we limit Pintos kernels to 512 kB for other reasons, so
+	# But we limit Naiveos kernels to 512 kB for other reasons, so
 	# it's easy enough to just read the entire contents of the
 	# partition or 512 kB from disk, whichever is smaller.
 	mov %es:12(%si), %ecx		# EBP = number of sectors
@@ -246,7 +246,7 @@ popa_ret:
 	ret				# Error code still in CF
 
 #### Command-line arguments and their count.
-#### This is written by the `pintos' utility and read by the kernel.
+#### This is written by the `Naiveos' utility and read by the kernel.
 #### The loader itself does not do anything with the command line.
 	.org LOADER_ARG_CNT - LOADER_BASE
 	.fill LOADER_ARG_CNT_LEN, 1, 0

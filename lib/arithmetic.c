@@ -10,12 +10,12 @@
    Some x86-64 machines, however, have a compiler and utilities
    that can generate 32-bit x86 code without having any of the
    necessary libraries, including libgcc.  Thus, we can make
-   Pintos work on these machines by simply implementing our own
+   Naiveos work on these machines by simply implementing our own
    64-bit division routines, which are the only routines from
-   libgcc that Pintos requires.
+   libgcc that Naiveos requires.
 
    Completeness is another reason to include these routines.  If
-   Pintos is completely self-contained, then that makes it that
+   Naiveos is completely self-contained, then that makes it that
    much less mysterious. */
 
 /* Uses x86 DIVL instruction to divide 64-bit N by 32-bit D to
