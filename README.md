@@ -18,6 +18,6 @@ Priority donation for user level threads
 
 ### Filesystem
 Write-back buffer cache  
-Extensible files with up to three levels of indirect i-nodes
-Subdirectory implementation allowing user-level access of relative and absolute addresses
+Extensible files with up to three levels of indirect i-nodes  
+Subdirectory implementation allowing user-level access of relative and absolute addresses  
 Efficient read-write lock for IO accesses
