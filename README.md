@@ -8,7 +8,7 @@ Simple implementation of an operating system.
 ### Running programs
 Running C programs  
 Custom argument passing  
-User&Kernele level multi processing
+User&Kernel level multi processing
 
 ### Multithreading
 User level multi-threading  
